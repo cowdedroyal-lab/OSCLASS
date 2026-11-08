@@ -5,7 +5,7 @@ title: 操作系统课程笔记与练习
 title_en: Operating Systems course notebook
 kind: course
 role: solo
-status: done
+status: archived   # 已归档：学习记录，不进入简历生成
 period: {start: "2023-09", end: "2023-09"}
 visibility: hidden
 
