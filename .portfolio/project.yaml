@@ -44,10 +44,18 @@ contributions:
     why: 两个线程同时读改写剩余票数会产生竞争
     techs: [mutex, semaphore]
     evidence: [mutex-code, sem-code]
-  - what: 用信号量实现生产者消费者、读者写者、理发师问题
+  - what: 用信号量实现生产者消费者、读者写者、理发师、哲学家就餐问题
     why: 练习经典同步问题的 P/V 写法
     techs: [semaphore, mutex, classic-synchronization-problems]
-    evidence: [pc-code, rw-code, barber-code]
+    evidence: [pc-code, rw-code, barber-code, philosopher-code]
+  - what: 用初值为 2 的信号量限制 5 辆车同时通过岔路口的数量
+    techs: [semaphore]
+    evidence: [road-sem]
+  - what: 写 hellothread、multithreads 演示线程创建，以及两个线程无保护地递增同一全局变量
+    techs: [posix-threads]
+    evidence: [hello-thread, shared-counter]
+  - what: 用 check 单元测试库写了最小测试例（add(2,3) == 5）
+    evidence: [check-test]
 
 findings:
   - claim: 哲学家就餐里每人先拿左叉再拿右叉的朴素写法会产生死锁
@@ -55,7 +63,6 @@ findings:
     evidence: [philosopher-code]
 
 questions:
-  - 这些程序是跟着课堂代码敲的还是自己独立写的？如果有自己改动或扩展的部分，可以补充说明
   - 哲学家就餐的死锁是否做过实际复现或解决？仓库里只有会死锁的版本
 
 evidence:
@@ -95,3 +102,19 @@ evidence:
     type: file
     path: classic_semaphore_problems/philosophers.c
     quote: ["while (1) { //会产生死锁"]
+  - id: road-sem
+    type: file
+    path: L08.Semaphore/semaphore2.c
+    quote: ["sem_init(&road,0,2);"]
+  - id: hello-thread
+    type: file
+    path: L05.thread/hellothread.c
+    quote: ["pthread_create(&tid,NULL,threadFun,NULL);"]
+  - id: shared-counter
+    type: file
+    path: L05.thread/multithreads.c
+    quote: ["printf(\"hello(%d)\\n\",value++);"]
+  - id: check-test
+    type: file
+    path: check_test/testcode.c
+    quote: ["ck_assert_int_eq(result,5);"]

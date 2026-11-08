@@ -21,6 +21,8 @@ OSCLASS url：https://www.bilibili.com/video/BV1bf4y147PZ/?spm_id_from=333.337.s
 - `classic_semaphore_problems/`：生产者消费者、读者写者、理发师、哲学家就餐四个经典问题，哲学家就餐里用注释标出了“会产生死锁”的写法
 - `check_test/`：用 `check` 单元测试库写的一个最小测试例子
 
+这些程序是跟着课程自己敲出的练习，代码均为本人所写。除上面各目录外，还包括：`L05.thread/` 里的 `hellothread.c`、`multithreads.c`（线程创建，以及两个线程无保护地递增同一全局变量），`L08.Semaphore/semaphore2.c`（初值为 2 的信号量限制同时通过岔路口的车数）。
+
 ## 结果
 
 没有量化的测试结果。每个程序是可运行的练习，行为靠运行时的输出观察；`check_test/` 里只有一个 `add(2,3) == 5` 的断言。
